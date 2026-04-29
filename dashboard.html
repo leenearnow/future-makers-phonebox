@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;{{ config.installation_name }}&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>:root { --accent: {{ config.accent_colour }}; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>* { box-sizing: border-box; margin: 0; padding: 0; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: system-ui, sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: #0a0a0a;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #f0f0f0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>height: 100vh;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>#message-panel {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>opacity: 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transition: opacity 0.6s ease;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>#message-panel.visible { opacity: 1; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>#big-message {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: clamp(3rem, 10vw, 7rem);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--accent);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>line-height: 1.1;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>#subtitle {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: clamp(1rem, 3vw, 1.8rem);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #ccc;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>#counter-panel {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 3rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>#total-label {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.15em;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #888;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>#total-number {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: clamp(4rem, 15vw, 10rem);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 800;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--accent);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>line-height: 1;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transition: transform 0.3s ease;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>#total-number.bump {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transform: scale(1.15);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="message-panel"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="big-message"&gt;{{ config.thank_you_message }}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="subtitle"&gt;{{ config.subtitle }}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="counter-panel"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="total-label"&gt;phones recycled&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="total-number"&gt;{{ total }}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const DURATION = {{ config.display_duration_seconds }} * 1000;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const panel = document.getElementById("message-panel");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const totalEl = document.getElementById("total-number");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let hideTimer = null;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function showMessage(total) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>// Update counter with a bounce animation</p>
+<p class="p1"><span class="Apple-converted-space">      </span>totalEl.textContent = total;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>totalEl.classList.add("bump");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>setTimeout(() =&gt; totalEl.classList.remove("bump"), 350);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>// Show thank you message then fade out</p>
+<p class="p1"><span class="Apple-converted-space">      </span>panel.classList.add("visible");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>clearTimeout(hideTimer);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>hideTimer = setTimeout(() =&gt; panel.classList.remove("visible"), DURATION);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Connect to real-time event stream</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const evtSource = new EventSource("/stream");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>evtSource.onmessage = (e) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const data = JSON.parse(e.data);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (data.type === "deposit") showMessage(data.total);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>};</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
